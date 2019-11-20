@@ -26,7 +26,10 @@ public class Digital extends javax.swing.JFrame {
     static Thread thread;
     static Date dd;
     static Timer timer;
+    static Timer timer1;
     int count = 11;
+    int count1= 0;
+            
 
     public Digital() {
         initComponents();
@@ -74,6 +77,9 @@ public class Digital extends javax.swing.JFrame {
         stop1button = new javax.swing.JButton();
         panel5 = new javax.swing.JPanel();
         uptext = new javax.swing.JLabel();
+        countup = new javax.swing.JButton();
+        statbutton2 = new javax.swing.JButton();
+        stopbutton2 = new javax.swing.JButton();
 
         jLabel2.setText("jLabel2");
 
@@ -335,13 +341,49 @@ public class Digital extends javax.swing.JFrame {
         uptext.setForeground(new java.awt.Color(255, 255, 255));
         uptext.setText("COUNT UP");
 
+        countup.setBackground(new java.awt.Color(255, 255, 255));
+        countup.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        countup.setForeground(new java.awt.Color(255, 51, 153));
+        countup.setText("00");
+        countup.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        countup.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                countupActionPerformed(evt);
+            }
+        });
+
+        statbutton2.setText("START");
+        statbutton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                statbutton2ActionPerformed(evt);
+            }
+        });
+
+        stopbutton2.setText("STOP");
+        stopbutton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                stopbutton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panel5Layout = new javax.swing.GroupLayout(panel5);
         panel5.setLayout(panel5Layout);
         panel5Layout.setHorizontalGroup(
             panel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel5Layout.createSequentialGroup()
-                .addGap(105, 105, 105)
-                .addComponent(uptext)
+                .addGroup(panel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel5Layout.createSequentialGroup()
+                        .addGap(105, 105, 105)
+                        .addComponent(uptext))
+                    .addGroup(panel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(panel5Layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(statbutton2, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(stopbutton2, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panel5Layout.createSequentialGroup()
+                            .addGap(88, 88, 88)
+                            .addComponent(countup, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panel5Layout.setVerticalGroup(
@@ -349,6 +391,12 @@ public class Digital extends javax.swing.JFrame {
             .addGroup(panel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(uptext)
+                .addGap(33, 33, 33)
+                .addComponent(countup, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(statbutton2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(stopbutton2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -442,6 +490,7 @@ public class Digital extends javax.swing.JFrame {
 
     private void countdown2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_countdown2ActionPerformed
         // TODO add your handling code here:
+//        timer.stop();
 
 
     }//GEN-LAST:event_countdown2ActionPerformed
@@ -468,6 +517,31 @@ public class Digital extends javax.swing.JFrame {
         // TODO add your handling code here:
         timer.stop();
     }//GEN-LAST:event_stop1buttonActionPerformed
+
+    private void countupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_countupActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_countupActionPerformed
+
+    private void statbutton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statbutton2ActionPerformed
+        // TODO add your handling code here:
+         timer1 = new Timer(1000, new ActionListener() {
+            
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                count1++;
+                countup.setText("" + count1);
+
+            }
+        });
+        timer1.start();
+        
+    }//GEN-LAST:event_statbutton2ActionPerformed
+
+    private void stopbutton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stopbutton2ActionPerformed
+        // TODO add your handling code here:
+          timer1.stop();
+    }//GEN-LAST:event_stopbutton2ActionPerformed
 
     private void digitalclockActionPerformed(java.awt.event.MouseEvent evt) {
         // TODO add your handling code here:
@@ -592,6 +666,7 @@ catch (javax.swing.UnsupportedLookAndFeelException ex) {
     private javax.swing.JLabel colon2;
     private javax.swing.JLabel colon3;
     private javax.swing.JButton countdown2;
+    private javax.swing.JButton countup;
     private javax.swing.JLabel currenttext;
     private javax.swing.JLabel downtext;
     private javax.swing.JLabel hours;
@@ -609,8 +684,10 @@ catch (javax.swing.UnsupportedLookAndFeelException ex) {
     private javax.swing.JLabel seconds;
     private javax.swing.JButton start;
     private javax.swing.JButton start1button;
+    private javax.swing.JButton statbutton2;
     private javax.swing.JButton stop;
     private javax.swing.JButton stop1button;
+    private javax.swing.JButton stopbutton2;
     private javax.swing.JLabel stoptext;
     private javax.swing.JLabel uptext;
     // End of variables declaration//GEN-END:variables
